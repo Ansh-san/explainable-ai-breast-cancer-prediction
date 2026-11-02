@@ -1,0 +1,8 @@
+# Reference environment: Python 3.13.16
+numpy==2.3.5
+scipy==1.17.1
+scikit-learn==1.6.1
+matplotlib==3.10.9
+shap==0.54.1
+pandas==2.2.3
+numba==0.66.0

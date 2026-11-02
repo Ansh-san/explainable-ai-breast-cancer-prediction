@@ -1,0 +1,358 @@
+{
+  "dataset": {
+    "name": "Wisconsin Diagnostic Breast Cancer (scikit-learn built-in copy)",
+    "samples": 569,
+    "features": 30,
+    "train_size": 455,
+    "test_size": 114,
+    "train_pearson_r_worst_radius_vs_worst_perimeter": 0.9937194638102951,
+    "encoding": {
+      "0": "benign",
+      "1": "malignant (positive)"
+    }
+  },
+  "model": {
+    "description": "Week 3 selected SVC, refitted on the same training split",
+    "scaler": "StandardScaler within Pipeline",
+    "kernel": "rbf",
+    "C": 10,
+    "gamma": 0.01,
+    "class_weight": "balanced",
+    "split_seed": 42
+  },
+  "test_metrics": {
+    "accuracy": 0.9912280701754386,
+    "precision_malignant": 1.0,
+    "recall_malignant": 0.9761904761904762,
+    "f1_malignant": 0.9879518072289156,
+    "confusion_counts": {
+      "tn": 72,
+      "fp": 0,
+      "fn": 1,
+      "tp": 41
+    }
+  },
+  "permutation": {
+    "dataset": "held-out test (post-hoc)",
+    "scoring": "malignant F1",
+    "repeats": 30,
+    "random_seed": 42,
+    "top_features": [
+      {
+        "feature": "worst texture",
+        "mean_f1_drop": 0.07309087302746715,
+        "std_f1_drop": 0.02465615280156536
+      },
+      {
+        "feature": "worst concavity",
+        "mean_f1_drop": 0.04669053133529334,
+        "std_f1_drop": 0.012597282006954178
+      },
+      {
+        "feature": "worst symmetry",
+        "mean_f1_drop": 0.033265673352851334,
+        "std_f1_drop": 0.010209049978210457
+      },
+      {
+        "feature": "texture error",
+        "mean_f1_drop": 0.026558628370754914,
+        "std_f1_drop": 0.00888421581450958
+      },
+      {
+        "feature": "mean concave points",
+        "mean_f1_drop": 0.025956483764138467,
+        "std_f1_drop": 0.016141044643463064
+      },
+      {
+        "feature": "mean concavity",
+        "mean_f1_drop": 0.02411305824666584,
+        "std_f1_drop": 0.011225290948227296
+      },
+      {
+        "feature": "worst area",
+        "mean_f1_drop": 0.021543031073837215,
+        "std_f1_drop": 0.0115471201212581
+      },
+      {
+        "feature": "worst radius",
+        "mean_f1_drop": 0.021209654724200704,
+        "std_f1_drop": 0.009380021094096429
+      },
+      {
+        "feature": "compactness error",
+        "mean_f1_drop": 0.020488913393595817,
+        "std_f1_drop": 0.014843693038044592
+      },
+      {
+        "feature": "worst smoothness",
+        "mean_f1_drop": 0.020115063580748414,
+        "std_f1_drop": 0.011470472653756138
+      },
+      {
+        "feature": "worst perimeter",
+        "mean_f1_drop": 0.020044975358914034,
+        "std_f1_drop": 0.009182169833544447
+      },
+      {
+        "feature": "worst concave points",
+        "mean_f1_drop": 0.01734163392504072,
+        "std_f1_drop": 0.008827366028521204
+      }
+    ]
+  },
+  "shap": {
+    "method": "Kernel SHAP; identity link; original-feature SVC decision_function",
+    "background_source": "stratified sample from training data only",
+    "background_size": 40,
+    "reference_A_counts": {
+      "benign": 25,
+      "malignant": 15
+    },
+    "reference_B_counts": {
+      "benign": 25,
+      "malignant": 15
+    },
+    "background_seeds": [
+      42,
+      7
+    ],
+    "coalition_seed": 123,
+    "nsamples": 1024,
+    "l1_reg": 0.0,
+    "selection_rule": "first false negative, true positive and true negative in fixed test order",
+    "cases": {
+      "false_negative": {
+        "case": "false_negative",
+        "test_position": 16,
+        "dataset_row_index_zero_based": 73,
+        "actual": "malignant",
+        "predicted": "benign",
+        "decision_score": -1.1066487789800665,
+        "reference_score": -0.2960224351687627,
+        "sum_shap_values": -0.8106263438113036,
+        "reconstructed_score": -1.1066487789800663,
+        "additivity_residual": 2.220446049250313e-16,
+        "top_abs_contributions": [
+          {
+            "feature": "worst texture",
+            "feature_value": 20.86,
+            "shap_value": -0.5481972825578497
+          },
+          {
+            "feature": "texture error",
+            "feature_value": 0.6205,
+            "shap_value": 0.26069275739669673
+          },
+          {
+            "feature": "mean texture",
+            "feature_value": 15.79,
+            "shap_value": -0.25418571226442915
+          },
+          {
+            "feature": "compactness error",
+            "feature_value": 0.02065,
+            "shap_value": 0.14023929951488476
+          },
+          {
+            "feature": "radius error",
+            "feature_value": 0.2787,
+            "shap_value": -0.12590306352690983
+          },
+          {
+            "feature": "worst symmetry",
+            "feature_value": 0.2589,
+            "shap_value": -0.11021255594821082
+          },
+          {
+            "feature": "worst smoothness",
+            "feature_value": 0.1411,
+            "shap_value": 0.09843013175232523
+          },
+          {
+            "feature": "worst compactness",
+            "feature_value": 0.3542,
+            "shap_value": -0.08978621715728749
+          }
+        ]
+      },
+      "true_positive": {
+        "case": "true_positive",
+        "test_position": 1,
+        "dataset_row_index_zero_based": 250,
+        "actual": "malignant",
+        "predicted": "malignant",
+        "decision_score": 5.3244052164936875,
+        "reference_score": -0.2960224351687627,
+        "sum_shap_values": 5.62042765166245,
+        "reconstructed_score": 5.324405216493687,
+        "additivity_residual": -8.881784197001252e-16,
+        "top_abs_contributions": [
+          {
+            "feature": "mean concave points",
+            "feature_value": 0.131,
+            "shap_value": 0.5834843292922425
+          },
+          {
+            "feature": "mean concavity",
+            "feature_value": 0.2712,
+            "shap_value": 0.5300460722480396
+          },
+          {
+            "feature": "worst area",
+            "feature_value": 2010.0,
+            "shap_value": 0.5203539440773061
+          },
+          {
+            "feature": "worst concavity",
+            "feature_value": 0.6991,
+            "shap_value": 0.5176539007247856
+          },
+          {
+            "feature": "worst radius",
+            "feature_value": 25.58,
+            "shap_value": 0.4833662211322177
+          },
+          {
+            "feature": "radius error",
+            "feature_value": 1.004,
+            "shap_value": 0.3836302851785859
+          },
+          {
+            "feature": "worst perimeter",
+            "feature_value": 165.3,
+            "shap_value": 0.36923496499319086
+          },
+          {
+            "feature": "area error",
+            "feature_value": 137.9,
+            "shap_value": 0.3570313475383796
+          }
+        ]
+      },
+      "true_negative": {
+        "case": "true_negative",
+        "test_position": 0,
+        "dataset_row_index_zero_based": 120,
+        "actual": "benign",
+        "predicted": "benign",
+        "decision_score": -3.16997009282969,
+        "reference_score": -0.2960224351687627,
+        "sum_shap_values": -2.8739476576609277,
+        "reconstructed_score": -3.1699700928296903,
+        "additivity_residual": -4.440892098500626e-16,
+        "top_abs_contributions": [
+          {
+            "feature": "worst texture",
+            "feature_value": 15.97,
+            "shap_value": -0.9940540334082555
+          },
+          {
+            "feature": "mean texture",
+            "feature_value": 10.82,
+            "shap_value": -0.533755206014395
+          },
+          {
+            "feature": "texture error",
+            "feature_value": 0.4607,
+            "shap_value": 0.2752124887026114
+          },
+          {
+            "feature": "radius error",
+            "feature_value": 0.1408,
+            "shap_value": -0.2566233442095786
+          },
+          {
+            "feature": "compactness error",
+            "feature_value": 0.01529,
+            "shap_value": 0.22474806398395256
+          },
+          {
+            "feature": "worst radius",
+            "feature_value": 12.82,
+            "shap_value": -0.21980490828317006
+          },
+          {
+            "feature": "mean concavity",
+            "feature_value": 0.03512,
+            "shap_value": -0.20319958809952715
+          },
+          {
+            "feature": "worst area",
+            "feature_value": 510.5,
+            "shap_value": -0.2023250837921896
+          }
+        ]
+      }
+    },
+    "sensitivity": {
+      "reference_a_score": -0.2960224351687627,
+      "reference_b_score": -0.24627526086811324,
+      "mean_absolute_change_in_shap": 0.02950596850163516,
+      "max_absolute_change_in_shap": 0.13409744069160434,
+      "top_five_feature_overlap": 4,
+      "background_row_overlap": 3,
+      "reference_b_case": {
+        "case": "false_negative_reference_B",
+        "test_position": 16,
+        "dataset_row_index_zero_based": 73,
+        "actual": "malignant",
+        "predicted": "benign",
+        "decision_score": -1.1066487789800665,
+        "reference_score": -0.24627526086811324,
+        "sum_shap_values": -0.8603735181119533,
+        "reconstructed_score": -1.1066487789800665,
+        "additivity_residual": 0.0,
+        "top_abs_contributions": [
+          {
+            "feature": "worst texture",
+            "feature_value": 20.86,
+            "shap_value": -0.4140998418662454
+          },
+          {
+            "feature": "texture error",
+            "feature_value": 0.6205,
+            "shap_value": 0.22181551628620386
+          },
+          {
+            "feature": "mean texture",
+            "feature_value": 15.79,
+            "shap_value": -0.18424176624206634
+          },
+          {
+            "feature": "worst symmetry",
+            "feature_value": 0.2589,
+            "shap_value": -0.146686344320053
+          },
+          {
+            "feature": "radius error",
+            "feature_value": 0.2787,
+            "shap_value": -0.11923609842833562
+          },
+          {
+            "feature": "worst compactness",
+            "feature_value": 0.3542,
+            "shap_value": -0.11235201366763276
+          },
+          {
+            "feature": "worst smoothness",
+            "feature_value": 0.1411,
+            "shap_value": 0.10671189460075137
+          },
+          {
+            "feature": "mean compactness",
+            "feature_value": 0.128,
+            "shap_value": -0.09947036769922166
+          }
+        ]
+      }
+    }
+  },
+  "software": {
+    "python": "3.13.16",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.6.1",
+    "shap": "0.54.1",
+    "matplotlib": "3.10.9"
+  }
+}
